@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A repo for trying to test many different features of mocha and sinon.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/*.spec.js"
   },
   "repository": {
     "type": "git",

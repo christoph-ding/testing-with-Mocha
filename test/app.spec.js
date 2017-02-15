@@ -1,2 +1,12 @@
 let expect = require('chai').expect;
-expect(1).to.be.a('number');
+    path = require('path');
+
+let testDataFunction = require(path.join(__dirname, '..', 'src', 'index'));
+
+describe('A very simple test', () => {
+    let aTestVariable = 'hello';
+
+    it('can run tests', ()=> {
+      expect(aTestVariable).to.eql('hello');
+    })
+})
