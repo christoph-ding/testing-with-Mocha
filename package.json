@@ -2,7 +2,6 @@
   "name": "testing-with-mocha",
   "version": "1.0.0",
   "description": "A repo for trying to test many different features of mocha and sinon.",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +14,9 @@
   "bugs": {
     "url": "https://github.com/ironpup/testing-with-Mocha/issues"
   },
-  "homepage": "https://github.com/ironpup/testing-with-Mocha#readme"
+  "homepage": "https://github.com/ironpup/testing-with-Mocha#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
 }
