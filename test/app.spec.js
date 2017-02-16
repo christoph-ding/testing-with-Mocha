@@ -61,4 +61,13 @@ describe('A very simple test', () => {
       expect(testDataFunctionReturnValue).to.eql('value altered by a sinon stub!');
     });
 
+    it('can change what functions return based on arguments', () => {
+      // set up test
+      sinon.stub(data, 'modifyValue').withArgs(3).returns(999)
+
+      // test
+      let testValue = data.testAnother();
+      expect(testValue).to.eql(999);
+    });
+
 })

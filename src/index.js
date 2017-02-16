@@ -20,7 +20,11 @@ module.exports = {
 */
 
 // we actually need have the entire module be in the interface
+// let GLOBALVALUE = 'global value';
+
 module.exports = {
+  GLOBALVALUE: 'global value',
+
   testDataFunction() {
     let testValue = 'initial value';
     testValue = this.helperFunction();
@@ -28,6 +32,16 @@ module.exports = {
   },
 
   helperFunction() {
+    console.log(this.GLOBALVALUE);
     return 'final value'
+  },
+
+  testAnother() {
+    let testValue = this.modifyValue(3);
+    return testValue;
+  },
+
+  modifyValue(int) {
+    return int + 2;
   }
 }
