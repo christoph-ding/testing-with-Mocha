@@ -6,4 +6,6 @@ function testDataFunction() {
   return testValue;
 }
 
-module.exports = testDataFunction;
+module.exports = {
+  testDataFunction: testDataFunction 
+}
