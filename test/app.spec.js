@@ -1,13 +1,19 @@
-let expect = require('chai').expect;
-let path = require('path');
+const expect = require('chai').expect;
+const path = require('path');
+const sinon = require('sinon');
 
 let testDataFunction = require(path.join(__dirname, '..', 'src', 'index'));
 
 describe('A very simple test', () => {
-    let aTestVariable = 'hello';
 
     it('can run tests', ()=> {
-      testDataFunction();
-      expect(aTestVariable).to.eql('hello');
+      let testDataFunctionReturnValue = testDataFunction();
+      expect(testDataFunctionReturnValue).to.eql('testOne');
     })
+
+    it('it can spy', ()=> {
+      let spy = sinon.spy(testDataFunction);
+      console.log(spy.callCount)
+    })
+
 })
