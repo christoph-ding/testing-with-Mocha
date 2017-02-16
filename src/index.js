@@ -1,6 +1,8 @@
 'use strict';
 
-// a test function for us to stub in our tests
+/* This is how I would normally expose a module, 
+   but this method does not interact as desired with sinon spies
+
 function helperFunction() {
   return 'final value'
 }
@@ -14,4 +16,18 @@ function testDataFunction() {
 module.exports = {
   testDataFunction: testDataFunction,
   helperFunction: helperFunction
+}
+*/
+
+// we actually need have the entire module be in the interface
+module.exports = {
+  testDataFunction() {
+    let testValue = 'initial value';
+    testValue = this.helperFunction();
+    return testValue;
+  },
+
+  helperFunction() {
+    return 'final value'
+  }
 }

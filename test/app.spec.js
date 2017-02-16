@@ -4,8 +4,6 @@ const sinon = require('sinon');
 
 let data = require(path.join(__dirname, '..', 'src', 'index'));
 
-
-
 describe('A very simple test', () => {
 
     it('can run tests', ()=> {
@@ -29,7 +27,6 @@ describe('A very simple test', () => {
           this.helper();
         },
         helper() {
-          console.log('helping')
           return 'some value';
         }  
       }
@@ -38,6 +35,13 @@ describe('A very simple test', () => {
       aThing.main();
 
       expect(aThing.helper.callCount).to.eql(1);
+    })
+
+    it('can use spies on helper functions in other modules', () => {
+      // spies
+      sinon.spy(data, 'helperFunction');
+      data.testDataFunction();
+      expect(data.helperFunction.callCount).to.eql(1);
     })
 
 })
