@@ -4,17 +4,40 @@ const sinon = require('sinon');
 
 let data = require(path.join(__dirname, '..', 'src', 'index'));
 
+
+
 describe('A very simple test', () => {
 
     it('can run tests', ()=> {
       let testDataFunctionReturnValue = data.testDataFunction();
-      expect(testDataFunctionReturnValue).to.eql('testOne');
+      expect(testDataFunctionReturnValue).to.eql('final value');
     })
 
-    it('can use spies to get see how existing functions are used', ()=>{
+    it('can use spies to get see how existing functions are used', () => {
+      // spies
       let spyDataFunction = sinon.spy(data, 'testDataFunction');
+
       data.testDataFunction();
-      data.testDataFunction();      
+      data.testDataFunction();
+
       expect(spyDataFunction.callCount).to.eql(2);
     })
+
+    it('can use spies to see how helper functions are called indirectly', () => {      
+      var aThing = {
+        main() {
+          this.helper();
+        },
+        helper() {
+          console.log('helping')
+          return 'some value';
+        }  
+      }
+      // spies
+      sinon.spy(aThing, 'helper');      
+      aThing.main();
+
+      expect(aThing.helper.callCount).to.eql(1);
+    })
+
 })

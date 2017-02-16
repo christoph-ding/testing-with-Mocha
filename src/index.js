@@ -1,11 +1,17 @@
 'use strict';
 
 // a test function for us to stub in our tests
+function helperFunction() {
+  return 'final value'
+}
+
 function testDataFunction() {
-  let testValue = 'testOne';
+  let testValue = 'initial value';
+  testValue = helperFunction();
   return testValue;
 }
 
 module.exports = {
-  testDataFunction: testDataFunction 
+  testDataFunction: testDataFunction,
+  helperFunction: helperFunction
 }
