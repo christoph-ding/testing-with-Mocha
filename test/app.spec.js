@@ -36,7 +36,7 @@ describe('A very simple test', () => {
       aThing.main();
 
       // test
-      expect(aThing.helper.callCount).to.eql(1);
+      expect(aThing.helper.called);
     });
 
     it('can use spies on helper functions in other modules', () => {
@@ -45,7 +45,7 @@ describe('A very simple test', () => {
       data.testDataFunction();
 
       // test
-      expect(data.helperFunction.callCount).to.eql(1);
+      expect(data.helperFunction.called);
     });
 
     it('can use stubs to affect functionality', () => {
@@ -68,6 +68,19 @@ describe('A very simple test', () => {
       // test
       let testValue = data.testAnother();
       expect(testValue).to.eql(999);
+
+      data.modifyValue.restore();
+      testValue = data.testAnother();
+      expect(testValue).to.eql(5);
     });
+
+    it('can count the number of times a function is called', () => {
+      // set up test
+      sinon.spy(data, 'someFunction')
+
+      // test
+      data.callManyTimes(5);
+      expect(data.someFunction.callCount).to.eql(5);
+    })
 
 })

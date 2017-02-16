@@ -23,8 +23,6 @@ module.exports = {
 // let GLOBALVALUE = 'global value';
 
 module.exports = {
-  GLOBALVALUE: 'global value',
-
   testDataFunction() {
     let testValue = 'initial value';
     testValue = this.helperFunction();
@@ -32,7 +30,6 @@ module.exports = {
   },
 
   helperFunction() {
-    console.log(this.GLOBALVALUE);
     return 'final value'
   },
 
@@ -43,5 +40,17 @@ module.exports = {
 
   modifyValue(int) {
     return int + 2;
+  },
+
+  callManyTimes(n) {
+    let counter = 0;
+    while (counter < n) {
+      this.someFunction();
+      counter++;
+    }
+  },
+
+  someFunction() {
+    return;
   }
 }
